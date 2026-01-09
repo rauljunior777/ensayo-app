@@ -1,0 +1,2 @@
+Se debe usar node js 24.11.1
+Tiene instalado React 19.2
