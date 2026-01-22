@@ -1,0 +1,17 @@
+.card-container {
+  flex: 0 0 auto;
+  width: 25%;
+  height: 600px;
+}
+
+.image-container {
+  height: 300px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.detail-container {
+  height: 300px;
+}

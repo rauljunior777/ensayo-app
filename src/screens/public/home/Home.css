@@ -1,0 +1,7 @@
+/*
+Hay que dar un ancho máximo por ejemplo 1400 px
+*/
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+}

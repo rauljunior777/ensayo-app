@@ -1,0 +1,18 @@
+/*
+Hay que dar un ancho máximo por ejemplo 1400 px
+*/
+
+.header-container {
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  display: inline-block;
+}
+
+.header-mode {
+  display: inline-block;
+}
