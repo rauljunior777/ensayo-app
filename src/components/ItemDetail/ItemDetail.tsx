@@ -5,7 +5,7 @@ interface ItemDetailProps {
 
 export const ItemDetail = (props: ItemDetailProps) => {
   return (
-    <p>{props.label}: <span>{props.description}</span></p>
+    <p className="font-normal">{props.label}: <span className="font-light">{props.description}</span></p>
   );
 }
 

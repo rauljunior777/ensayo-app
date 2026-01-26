@@ -1,12 +1,19 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 /*
 Hay que dar un ancho máximo por ejemplo 1400 px
 */
+@theme {
+  --color-dark-blue: hsl(209, 23%, 22%);
+  --color-very-dark-blue: hsl(207, 26%, 17%);
+}
 
 .header-container {
   box-sizing: border-box;
-  box-shadow: 0 2px 2px lightgray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
+  padding: 1.5rem 3rem;
 }
 
 .header-title {
@@ -15,4 +22,11 @@ Hay que dar un ancho máximo por ejemplo 1400 px
 
 .header-mode {
   display: inline-block;
+}
+
+.header-mode img {
+  display: inline-block;
+  height: 1.2rem;
+  margin-right: 0.5rem;
+  width: auto;
 }
