@@ -6,12 +6,16 @@ interface CardProps {
   urlImage: string;
   title: string;
   details: DetailItem[];
+  onClic: (name: string) => void;
 }
 
 export const Card = (props: CardProps) => {
+  const handleClic = (): void => {
+    props.onClic(props.title);
+  }
   
   return (
-    <div className="card-container bg-white dark:bg-dark-blue dark:text-white">
+    <div className="card-container bg-white dark:bg-dark-blue dark:text-white" onClick={handleClic}>
       <div className="image-container">
         <img src={props.urlImage}/>
       </div>

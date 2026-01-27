@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../../../hooks';
 import Card from '../../../components/Card/Card';
 import InputText from '../../../components/Input/InputText/InputText';
@@ -35,6 +36,7 @@ const getCountryDescription = (country: Country): DetailItem[] => {
 }
 
 export const Home = () => {
+  const navigate = useNavigate();
   const { data, loading, error } = useFetch<Country[]>(countriesUrl);
 
   const [text, setText] = useState("");
@@ -50,6 +52,10 @@ export const Home = () => {
 
   const regions: string[] = [...new Set(data?.map((x) => x.region))];
   const filteredItems: Country[] | undefined = data?.filter(x => x.name.common.toLowerCase().includes(text.toLowerCase()) && (!regionSelected || x.region === regionSelected));
+
+  const handleSelectCard = (name: string): void => {
+    navigate(`/detail/${name}`);
+  }
 
   return (
     <>
@@ -71,6 +77,7 @@ export const Home = () => {
             title={item.name.common}
             urlImage={item.flags.png}
             details={getCountryDescription(item)}
+            onClic={handleSelectCard}
             />
         ))}
       </div>

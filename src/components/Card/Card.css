@@ -29,24 +29,3 @@ Hay que dar un ancho máximo por ejemplo 1400 px
   padding: 1.5rem;
   height: 50%;
 }
-
-/* .card-container {
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  height: 500px;
-  padding: 10px;
-  width: 25%;
-}
-
-.image-container {
-  height: 50%;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-}
-
-.detail-container {
-  height: 50%;
-} */

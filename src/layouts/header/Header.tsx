@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Header.css';
-import mediaLuna from '../../../public/media-luna.svg';
+import mediaLuna from '../../assets/media-luna.svg';
 
 export const Header = () => {
   const [theme, setTheme] = useState(() => {

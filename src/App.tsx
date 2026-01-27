@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
-import Header from './layouts/header/Header'
-import Home from './screens/public/home/Home'
-import About from './screens/public/about/About'
-import Detail from './screens/public/detail/Detail'
+import { Routes, Route } from 'react-router-dom';
+import Header from './layouts/header/Header';
+import Home from './screens/public/home/Home';
+import About from './screens/public/about/About';
+import Detail from './screens/public/detail/Detail';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/detail' element={<Detail/>}/>
+        <Route path='/detail/:name' element={<Detail/>}/>
         <Route path='/about' element={<About />}/>
       </Routes>
     </div>

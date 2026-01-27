@@ -13,9 +13,9 @@ export const Select = ({ classNameSelect, list, onSelect }: SelectProps) => {
 
   return (
     <select className={classNameSelect} onChange={handleChange}>
-      <option value="" key="default-select-key" disabled selected>Filter by region</option>
+      <option value="" key="default-select-key" disabled selected className="bg-white dark:bg-dark-blue dark:text-white">Filter by region</option>
       {list.map((x, index) => (
-        <option value={x} key={`${x}-${index}`}>{x}</option>
+        <option value={x} key={`${x}-${index}`} className="bg-white dark:bg-dark-blue dark:text-white">{x}</option>
       ))}
     </select>
   );
