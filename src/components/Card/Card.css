@@ -14,18 +14,18 @@ Hay que dar un ancho máximo por ejemplo 1400 px
   height: 400px;
 }
 
-.image-container {
+.card-image-container {
   width: 100%;
   height: 50%;
 }
 
-.image-container img {
+.card-image-container img {
   border-radius: 0.2rem 0.2rem 0 0;
   width: 100%;
   height: 100%;
 }
 
-.detail-container {
+.card-detail-container {
   padding: 1.5rem;
   height: 50%;
 }

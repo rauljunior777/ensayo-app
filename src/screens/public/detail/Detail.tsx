@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
-import ItemDetail from "../../../components/ItemDetail/ItemDetail";
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFetch } from '../../../hooks';
+import ItemDetail from "../../../components/ItemDetail/ItemDetail";
 import type { DetailItem } from '../../../interfaces/detail';
+import './Detail.css';
 
 const getNativeName = (data: any): string => {
   const natives: any = Object.values(data.name.nativeName);
@@ -31,6 +32,7 @@ const getCurrencies = (data: any): string => {
 }
 
 const getBorders = (data: any): string[] => {
+  if (!data.borders) return [];
   const borders: any[] = Object.values(data.borders);
   
   const length: number = borders.length;
@@ -38,7 +40,7 @@ const getBorders = (data: any): string[] => {
   else return [];
 }
 
-const getCountryDescription = (country: any): DetailItem[] => {
+const getColumnLeftDescription = (country: any): DetailItem[] => {
   return [
     {
       label: "Native Name",
@@ -60,10 +62,14 @@ const getCountryDescription = (country: any): DetailItem[] => {
       label: "Capital",
       description: country.capital[0]
     },
-    ////////////////////// SEGUNDA COLUMNA
+  ];
+}
+
+const getColumnRightDescription = (country: any): DetailItem[] => {
+  return [
     {
       label: "Top Level Domain",
-      description: ".be"
+      description: country.tld[0]
     },
     {
       label: "Currencies",
@@ -80,6 +86,7 @@ const getCountryDescription = (country: any): DetailItem[] => {
 const detailUrl: string = 'https://restcountries.com/v3.1/name/';
 
 export const Detail = () => {
+  const navigate = useNavigate();
   const { name } = useParams<{ name: string }>();
   const { data, loading, error } = useFetch<any>(`${detailUrl}${name}`);
 
@@ -91,25 +98,48 @@ export const Detail = () => {
     return <div>Hay un error: {error.message}</div>
   }
 
-  console.log("datos detalles", data);
+  const handleBack = (): void => {
+    navigate(`/`);
+  }
+
+  const detailData: any = data[0] as any;
+
+  const renderBorders = () => {
+    if (("borders" in detailData)) 
+      return getBorders(detailData).map((item) => (
+        <div className="default-button default-label btn-back bg-white dark:bg-dark-blue dark:text-white" key={`${name}-borders-${item}`}>{item}</div>
+      ));
+    return <p className='inline-block'>None</p>;
+  };
+
   return (
-    <>
-      <div className="card-container bg-white dark:bg-dark-blue dark:text-white">
-        <div className="image-container">
-          <img src={data[0].flags.svg}/>
+    <div>
+      <div className='header-container'>
+        <button className='default-button btn-back bg-white dark:bg-dark-blue dark:text-white' onClick={handleBack}>
+          &#8592; Back
+        </button>
+      </div>
+      <div className="detail-card-container bg-white dark:bg-very-dark-blue dark:text-white">
+        <div className="detail-image-container">
+          <img src={detailData.flags.svg}/>
         </div>
         <div className="detail-container">
           <h1 className="font-bold text-lgp">{name}</h1>
-          {getCountryDescription(data[0]).map((item, index) => (
-            <ItemDetail key={`item-detail-${name}-${index}`} label={item.label} description={item.description}/>
-          ))}
-          <p className="font-normal">Border Countries: </p>
-            {getBorders(data[0]).map((item) => (
-              <div className="border font-light" key={`${name}-borders-${item}`}>{item}</div>
+          <div className="detail-column">
+            {getColumnLeftDescription(detailData).map((item, index) => (
+              <ItemDetail key={`item-detail-${name}-${index}`} label={item.label} description={item.description}/>
             ))}
+          </div>
+          <div className="detail-column">
+            {getColumnRightDescription(detailData).map((item, index) => (
+              <ItemDetail key={`item-detail-${name}-${index}`} label={item.label} description={item.description}/>
+            ))}
+          </div>
+          <p className="font-normal inline-block mr-2">Border Countries: </p>
+          {renderBorders()}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

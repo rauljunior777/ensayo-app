@@ -16,10 +16,10 @@ export const Card = (props: CardProps) => {
   
   return (
     <div className="card-container bg-white dark:bg-dark-blue dark:text-white" onClick={handleClic}>
-      <div className="image-container">
+      <div className="card-image-container">
         <img src={props.urlImage}/>
       </div>
-      <div className="detail-container">
+      <div className="card-detail-container">
         <h1 className="font-bold text-lgp">{props.title}</h1>
         {props.details.map((item, index) => (
           <ItemDetail key={`item-detail-${props.title}-${index}`} label={item.label} description={item.description}/>
