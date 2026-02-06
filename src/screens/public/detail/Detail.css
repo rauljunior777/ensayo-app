@@ -1,12 +1,4 @@
-@import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
-/*
-Hay que dar un ancho máximo por ejemplo 1400 px
-*/
-@theme {
-  --color-dark-blue: hsl(209, 23%, 22%);
-  --color-very-dark-blue: hsl(207, 26%, 17%);
-}
+
 
 .detail-card-container {
   display: flex;
