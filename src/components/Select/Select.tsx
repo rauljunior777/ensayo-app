@@ -30,7 +30,7 @@ export const Select = ({ classNameSelect, list, onSelect }: SelectProps) => {
         value={value}
         aria-label="Filter by region"
       >
-        <option value="none" key="default-select-key" className="bg-white dark:bg-dark-blue dark:text-black">Filter by region</option>
+        <option value="none" key="default-select-key" disabled hidden>Filter by region</option>
         {list.map((x, index) => (
           <option value={x} key={`${x}-${index}`} className="bg-white dark:bg-dark-blue dark:text-white">{x}</option>
         ))}
